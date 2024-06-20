@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>596</width>
+    <height>309</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QTabWidget" name="main_window">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>19</y>
+     <width>561</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="display_tab">
+    <attribute name="title">
+     <string>Display</string>
+    </attribute>
+    <widget class="QLCDNumber" name="time_remaining">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>50</y>
+       <width>311</width>
+       <height>91</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="play_timer_button">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>60</y>
+       <width>70</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    border: 2px solid black;
+    border-radius: 35px;
+    border-style: outset;
+    background: lightGray;
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 #bbb
+        );
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: qradialgradient(
+        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
+        radius: 1.35, stop: 0 #fff, stop: 1 #ddd
+        );
+    }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resource.qrc">
+       <normaloff>:/images/play.png</normaloff>
+       <normalon>:/images/pause.png</normalon>:/images/play.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="repeat_timer_button">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>70</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    border: 2px solid black;
+    border-radius: 35px;
+    border-style: outset;
+    background: lightGray;
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 #bbb
+        );
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: qradialgradient(
+        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
+        radius: 1.35, stop: 0 #fff, stop: 1 #ddd
+        );
+    }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resource.qrc">
+       <normaloff>:/images/repeat.png</normaloff>:/images/repeat.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="plus_one_button">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>10</y>
+       <width>101</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>+1:00</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="minus_one_button">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>150</y>
+       <width>101</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>-1:00</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="set_time_button">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>531</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Set Time</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="options_tab">
+    <attribute name="title">
+     <string>Options</string>
+    </attribute>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>255</x>
+       <y>30</y>
+       <width>281</width>
+       <height>171</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>10</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sounds</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="play_list_button">
+     <property name="geometry">
+      <rect>
+       <x>461</x>
+       <y>207</y>
+       <width>75</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resource.qrc">
+       <normaloff>:/images/play.png</normaloff>
+       <normalon>:/images/stop.png</normalon>:/images/play.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="remove_sound_button">
+     <property name="geometry">
+      <rect>
+       <x>254</x>
+       <y>207</y>
+       <width>75</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="import_sound_button">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>207</y>
+       <width>91</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Import New...</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="randomize_sound">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string extracomment="A random sound is played each time the timer goes off."/>
+     </property>
+     <property name="text">
+      <string>Randomize Sound</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="auto_repeat_sound">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string extracomment="Timer is restarted automatically when it completes."/>
+     </property>
+     <property name="text">
+      <string>Auto Repeat</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="lock_display">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string extracomment="Locks all display buttons besides the play/pause button."/>
+     </property>
+     <property name="text">
+      <string>Lock Display</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="zen_mode">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>160</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string extracomment="Timer automatically set to repeat every 20 minutes."/>
+     </property>
+     <property name="text">
+      <string>Zen Mode</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="hide_time">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string extracomment="Hides display time."/>
+     </property>
+     <property name="text">
+      <string>Hide Time</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
