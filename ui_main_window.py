@@ -32,10 +32,12 @@ class Ui_MainWindow(object):
         self.display_tab.setObjectName(u"display_tab")
         self.time_remaining = QLCDNumber(self.display_tab)
         self.time_remaining.setObjectName(u"time_remaining")
-        self.time_remaining.setGeometry(QRect(120, 50, 311, 91))
+        self.time_remaining.setGeometry(QRect(120, 50, 311, 121))
+        self.time_remaining.setDigitCount(5)
+        self.time_remaining.setProperty("intValue", 0)
         self.play_timer_button = QPushButton(self.display_tab)
         self.play_timer_button.setObjectName(u"play_timer_button")
-        self.play_timer_button.setGeometry(QRect(460, 60, 70, 70))
+        self.play_timer_button.setGeometry(QRect(460, 77, 70, 70))
         self.play_timer_button.setStyleSheet(u"QPushButton {\n"
 "    border: 2px solid black;\n"
 "    border-radius: 35px;\n"
@@ -66,7 +68,7 @@ class Ui_MainWindow(object):
         self.play_timer_button.setCheckable(True)
         self.repeat_timer_button = QPushButton(self.display_tab)
         self.repeat_timer_button.setObjectName(u"repeat_timer_button")
-        self.repeat_timer_button.setGeometry(QRect(20, 60, 70, 70))
+        self.repeat_timer_button.setGeometry(QRect(20, 77, 70, 70))
         self.repeat_timer_button.setStyleSheet(u"QPushButton {\n"
 "    border: 2px solid black;\n"
 "    border-radius: 35px;\n"
@@ -96,9 +98,6 @@ class Ui_MainWindow(object):
         self.plus_one_button = QPushButton(self.display_tab)
         self.plus_one_button.setObjectName(u"plus_one_button")
         self.plus_one_button.setGeometry(QRect(330, 10, 101, 30))
-        self.minus_one_button = QPushButton(self.display_tab)
-        self.minus_one_button.setObjectName(u"minus_one_button")
-        self.minus_one_button.setGeometry(QRect(330, 150, 101, 30))
         self.set_time_button = QPushButton(self.display_tab)
         self.set_time_button.setObjectName(u"set_time_button")
         self.set_time_button.setGeometry(QRect(10, 200, 531, 31))
@@ -118,6 +117,7 @@ class Ui_MainWindow(object):
         icon2.addFile(u":/images/play.png", QSize(), QIcon.Normal, QIcon.Off)
         icon2.addFile(u":/images/stop.png", QSize(), QIcon.Normal, QIcon.On)
         self.play_list_button.setIcon(icon2)
+        self.play_list_button.setCheckable(True)
         self.remove_sound_button = QPushButton(self.options_tab)
         self.remove_sound_button.setObjectName(u"remove_sound_button")
         self.remove_sound_button.setGeometry(QRect(254, 207, 75, 24))
@@ -143,7 +143,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.main_window.setCurrentIndex(1)
+        self.main_window.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -154,7 +154,6 @@ class Ui_MainWindow(object):
         self.play_timer_button.setText("")
         self.repeat_timer_button.setText("")
         self.plus_one_button.setText(QCoreApplication.translate("MainWindow", u"+1:00", None))
-        self.minus_one_button.setText(QCoreApplication.translate("MainWindow", u"-1:00", None))
         self.set_time_button.setText(QCoreApplication.translate("MainWindow", u"Set Time", None))
         self.main_window.setTabText(self.main_window.indexOf(self.display_tab), QCoreApplication.translate("MainWindow", u"Display", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Sounds", None))

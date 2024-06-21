@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="display_tab">
     <attribute name="title">
@@ -35,15 +35,21 @@
        <x>120</x>
        <y>50</y>
        <width>311</width>
-       <height>91</height>
+       <height>121</height>
       </rect>
+     </property>
+     <property name="digitCount">
+      <number>5</number>
+     </property>
+     <property name="intValue" stdset="0">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QPushButton" name="play_timer_button">
      <property name="geometry">
       <rect>
        <x>460</x>
-       <y>60</y>
+       <y>77</y>
        <width>70</width>
        <height>70</height>
       </rect>
@@ -94,7 +100,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>60</y>
+       <y>77</y>
        <width>70</width>
        <height>70</height>
       </rect>
@@ -148,19 +154,6 @@ QPushButton:pressed {
      </property>
      <property name="text">
       <string>+1:00</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="minus_one_button">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>150</y>
-       <width>101</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-1:00</string>
      </property>
     </widget>
     <widget class="QPushButton" name="set_time_button">
@@ -220,6 +213,9 @@ QPushButton:pressed {
       <iconset resource="resource.qrc">
        <normaloff>:/images/play.png</normaloff>
        <normalon>:/images/stop.png</normalon>:/images/play.png</iconset>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="remove_sound_button">
