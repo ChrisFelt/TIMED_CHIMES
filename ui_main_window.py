@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QLCDNumber, QLabel,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDateTimeEdit, QLCDNumber,
+    QLabel, QListWidget, QListWidgetItem, QPushButton,
+    QSizePolicy, QTabWidget, QTimeEdit, QWidget)
 import resource_rc
 
 class Ui_MainWindow(object):
@@ -33,6 +33,7 @@ class Ui_MainWindow(object):
         self.time_remaining = QLCDNumber(self.display_tab)
         self.time_remaining.setObjectName(u"time_remaining")
         self.time_remaining.setGeometry(QRect(120, 50, 311, 121))
+        self.time_remaining.setFocusPolicy(Qt.ClickFocus)
         self.time_remaining.setDigitCount(5)
         self.time_remaining.setProperty("intValue", 0)
         self.play_timer_button = QPushButton(self.display_tab)
@@ -100,7 +101,15 @@ class Ui_MainWindow(object):
         self.plus_one_button.setGeometry(QRect(330, 10, 101, 30))
         self.set_time_button = QPushButton(self.display_tab)
         self.set_time_button.setObjectName(u"set_time_button")
-        self.set_time_button.setGeometry(QRect(10, 200, 531, 31))
+        self.set_time_button.setGeometry(QRect(360, 190, 71, 41))
+        self.input_time = QTimeEdit(self.display_tab)
+        self.input_time.setObjectName(u"input_time")
+        self.input_time.setGeometry(QRect(280, 195, 71, 31))
+        font = QFont()
+        font.setPointSize(12)
+        self.input_time.setFont(font)
+        self.input_time.setCurrentSection(QDateTimeEdit.HourSection)
+        self.input_time.setTime(QTime(0, 0, 0))
         self.main_window.addTab(self.display_tab, "")
         self.options_tab = QWidget()
         self.options_tab.setObjectName(u"options_tab")
@@ -151,10 +160,17 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Form", None))
+#if QT_CONFIG(tooltip)
+        self.main_window.setToolTip("")
+#endif // QT_CONFIG(tooltip)
         self.play_timer_button.setText("")
         self.repeat_timer_button.setText("")
         self.plus_one_button.setText(QCoreApplication.translate("MainWindow", u"+1:00", None))
         self.set_time_button.setText(QCoreApplication.translate("MainWindow", u"Set Time", None))
+#if QT_CONFIG(tooltip)
+        self.input_time.setToolTip("")
+#endif // QT_CONFIG(tooltip)
+        self.input_time.setDisplayFormat(QCoreApplication.translate("MainWindow", u"hh:mm", None))
         self.main_window.setTabText(self.main_window.indexOf(self.display_tab), QCoreApplication.translate("MainWindow", u"Display", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Sounds", None))
         self.play_list_button.setText("")
