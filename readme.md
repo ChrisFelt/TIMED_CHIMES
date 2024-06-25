@@ -19,6 +19,9 @@ Icon source:
 
 Stretch goals:
 
+Create Time class to handle timers longer than 24 hours - QTime maxes out at 23h 59m 59s
+Additionally requires replacement of QTimeEdit widget with a widget that can handle times >= 24h.
+
 Sound can be played for custom length of time, once, or on a loop. 
 
 Controls can be bound to keys on the keyboard for quick access. 
