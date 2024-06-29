@@ -29,6 +29,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._paused_msecs = 0
         self._elapsed_pause = QElapsedTimer()  # current pause session
 
+        # track added time
+        self._added_msecs = 0
+
         # set time button slot
         self.set_time_button.clicked.connect(self.set_timer)
 
@@ -56,11 +59,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def __elapsed_secs(self) -> int:
         """Returns the seconds elapsed"""
+        # return only added time if elapsed timer has not been started yet
         if self._elapsed_time.elapsed() < 0:
-            return 0  # elapsed() returns massive negative int before QElapsedTime started
+            return self._added_msecs // -1000  
         
         # pause logic: subtract paused msecs from elapsed time
-        elapsed_msecs = self._elapsed_time.elapsed() - self._paused_msecs
+        elapsed_msecs = self._elapsed_time.elapsed() - self._paused_msecs - self._added_msecs
         print("Elapsed msecs: ", elapsed_msecs)
         return elapsed_msecs // 1000
     
@@ -127,6 +131,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._target_time = self.input_time_box.time()
         self._elapsed_pause = QElapsedTimer()
         self._paused_msecs = 0
+        self._added_msecs = 0
         self.__update_lcd_screen()
     
     def play_pause(self):
@@ -143,8 +148,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def plus_one(self):
         """Adds one minute to current timer and refreshes lcd screen"""
-        # TODO: implement me
-        pass
+        # TODO: FIX -- currently resets the clock to 00:00 when clicked at 23:59. 
+        self._added_msecs += 60000
+        self.__update_lcd_screen()
     
     def update_timer(self):
         """QTimer slot for timeoue signal. Updates screen and checks for alarm"""
