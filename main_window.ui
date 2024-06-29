@@ -32,7 +32,7 @@
     <attribute name="title">
      <string>Display</string>
     </attribute>
-    <widget class="QLCDNumber" name="time_remaining">
+    <widget class="QLCDNumber" name="timer_lcd_screen">
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -175,7 +175,7 @@ QPushButton:pressed {
       <string>Set Time</string>
      </property>
     </widget>
-    <widget class="QTimeEdit" name="input_time">
+    <widget class="QTimeEdit" name="input_time_box">
      <property name="geometry">
       <rect>
        <x>280</x>

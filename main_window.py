@@ -16,7 +16,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.app = app
 
         # initialize internal time data members
-        self._target_time = self.input_time.time()  # total seconds on timer when time set. DOES NOT CHANGE until timer reset
+        self._target_time = self.input_time_box.time()  # total seconds on timer when time set. DOES NOT CHANGE until timer reset
         self._timer_secs = 0  # track remaining seconds on timer
         self._elapsed_time = QElapsedTimer()  # accurate time keeping
         # self._elapsed_msecs = 0
@@ -34,6 +34,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # set play/pause button slot
         self.play_timer_button.clicked.connect(self.play_pause)
+
+        # set repeat button slot
+        self.repeat_timer_button.clicked.connect(self.repeat_timer)
+
+        # set +1:00 button slot
+        self.plus_one_button.clicked.connect(self.plus_one)
 
     # -------------
     # GENERAL use methods
@@ -73,7 +79,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # cast time to QLCDNumber screen
         text_time = time.toString("hh:mm")
-        self.time_remaining.display(text_time)
+        self.timer_lcd_screen.display(text_time)
     
     def __alarm(self):
         """Plays alarm sound when called"""
@@ -117,8 +123,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._timer.stop()
         # reset elapsed timer and internal data members
         self._elapsed_time = QElapsedTimer()
-        self._timer_secs = self.__convert_from_qtime(self.input_time.time())
-        self._target_time = self.input_time.time()
+        self._timer_secs = self.__convert_from_qtime(self.input_time_box.time())
+        self._target_time = self.input_time_box.time()
         self._elapsed_pause = QElapsedTimer()
         self._paused_msecs = 0
         self.__update_lcd_screen()
@@ -129,6 +135,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.__start_timer()
         else:
             self.__pause_timer()
+
+    def repeat_timer(self):
+        """Repeats current timer. NOTE: current timer set when "Set Time" button is pressed"""
+        # TODO: implement me
+        pass
+
+    def plus_one(self):
+        """Adds one minute to current timer and refreshes lcd screen"""
+        # TODO: implement me
+        pass
     
     def update_timer(self):
         """QTimer slot for timeoue signal. Updates screen and checks for alarm"""
