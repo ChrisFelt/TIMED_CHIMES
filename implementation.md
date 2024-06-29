@@ -15,3 +15,6 @@ https://doc.qt.io/qtforpython-6/examples/example_widgets_widgets_digitalclock.ht
 
 override stepby method of spinbox class (step by minutes instead of hours):
 https://stackoverflow.com/questions/53498457/pyside-spinbox-use-a-set-of-fixed-values
+
+dealing with checkable buttons:
+https://stackoverflow.com/questions/48137660/pyside-pyqt-detecting-qpushbutton-state

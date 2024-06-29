@@ -19,6 +19,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._target_time = self.input_time.time()  # total seconds on timer when time set. DOES NOT CHANGE until timer reset
         self._timer_secs = 0  # track remaining seconds on timer
         self._elapsed_time = QElapsedTimer()  # accurate time keeping
+        # self._elapsed_msecs = 0
 
         # timer emits regular signals for updating the app
         self._timer = QTimer()
@@ -31,14 +32,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # set time button slot
         self.set_time_button.clicked.connect(self.set_timer)
 
-        # set play button slot
-        self.play_timer_button.clicked.connect(self.start_timer)
+        # set play/pause button slot
+        self.play_timer_button.clicked.connect(self.play_pause)
 
     # -------------
     # GENERAL use methods
-    def __convert_to_qtime(self, sec) -> QTime:
+    def __convert_to_qtime(self, time, msec=False) -> QTime:
         """Converts seconds to a QTime object and returns it"""
-        return QTime(0, 0, 0).addSecs(sec)
+        # convert to seconds if time passed as msecs
+        if msec is True:
+            time = time // 1000
+        return QTime(0, 0, 0).addSecs(time)
     
     def __convert_from_qtime(self, qtime_object) -> int:
         """Converts QTime object into and returns seconds"""
@@ -46,18 +50,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def __elapsed_secs(self) -> int:
         """Returns the seconds elapsed"""
-        # TODO: add pause logic -> subtract paused_secs from elapsed time
-        check_elapsed_time = self._elapsed_time.elapsed()  # milliseconds
-
-        if check_elapsed_time < 0:
+        if self._elapsed_time.elapsed() < 0:
             return 0  # elapsed() returns massive negative int before QElapsedTime started
         
-        return check_elapsed_time // 1000
+        # pause logic: subtract paused msecs from elapsed time
+        elapsed_msecs = self._elapsed_time.elapsed() - self._paused_msecs
+        print("Elapsed msecs: ", elapsed_msecs)
+        return elapsed_msecs // 1000
     
     def __check_time(self) -> bool:
         """Returns True if elapsed timer meets or exceeds the set time, otherwise returns False"""
-        #print("Elapsed: ", self.__elapsed_secs())
-        #print("Target: ", self.__convert_from_qtime(self._target_time))
         if self.__elapsed_secs() >= self.__convert_from_qtime(self._target_time):
             return True
         
@@ -72,6 +74,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # cast time to QLCDNumber screen
         text_time = time.toString("hh:mm")
         self.time_remaining.display(text_time)
+    
+    def __alarm(self):
+        """Plays alarm sound when called"""
+        # placeholder popup
+        ret = QMessageBox.information(self,"Alarm", "Timer ended.")
+                
+        if ret == QMessageBox.Ok : 
+            print("User chose OK")
+        else : 
+            print ("User chose Cancel")
+    
+    def __start_timer(self):
+        """Starts timer given time from user input"""
+        self._timer.start(TIMEOUT_STEP)  # timeout signal sent every (time_step) milliseconds
+        # start elapsed timer only if it hasn't started yet
+        if self._elapsed_time.elapsed() < 0:
+            self._elapsed_time.start()
+
+        # pause logic: increment time paused, if any
+        print("Pause time: ", self._elapsed_pause.elapsed())
+        if self._elapsed_pause.elapsed() > 0:
+            self._paused_msecs += self._elapsed_pause.elapsed()
+            print("Total paused time: ", self._paused_msecs)
+
+        self._elapsed_pause = QElapsedTimer()  # always reset pause elapsed timer
+        
+        print("Timer started.")
+    
+    def __pause_timer(self):
+        """Pauses the timer"""
+        self._timer.stop()
+        self._elapsed_pause.start()
+        print("Timer paused.")
 
     # -------------
     # DISPLAY tab slots
@@ -84,33 +119,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._elapsed_time = QElapsedTimer()
         self._timer_secs = self.__convert_from_qtime(self.input_time.time())
         self._target_time = self.input_time.time()
-        self._paused_msecs = 0
         self._elapsed_pause = QElapsedTimer()
+        self._paused_msecs = 0
         self.__update_lcd_screen()
-
-    def alarm(self):
-        """Plays alarm sound when called"""
-        # placeholder popup
-        ret = QMessageBox.information(self,"Alarm", "Timer ended.")
-                
-        if ret == QMessageBox.Ok : 
-            print("User chose OK")
-        else : 
-            print ("User chose Cancel")
     
-    def start_timer(self):
-        """Starts timer given time from user input"""
-        # TODO: add pause logic -> get elapsed_pause time and add to paused_secs, then reassign elapsed_pause to new QElapsedTimer
-        self._timer.start(TIMEOUT_STEP)  # timeout signal sent every (time_step) milliseconds
-        self._elapsed_time.start()
-        print("Timer started.")
-    
-    def pause_timer(self):
-        """Pauses the timer"""
-        # TODO: add pause logic -> start elapsed_pause and stop QTimer
-        pass
+    def play_pause(self):
+        """Start timer when checked, otherwise pause timer"""
+        if self.play_timer_button.isChecked():
+            self.__start_timer()
+        else:
+            self.__pause_timer()
     
     def update_timer(self):
+        """QTimer slot for timeoue signal. Updates screen and checks for alarm"""
         # secsTo(new_time) returns the number of seconds from this time to the new time
         self._timer_secs -= UPDATE_SEC
         self.__update_lcd_screen()
@@ -118,7 +139,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # play sound when time is up
         if self.__check_time():
             self._timer.stop()  # STOP THE TIMER FIRST!!!
-            self.alarm()
+            self.__alarm()
     
     # -------------
     # OPTIONS tab slots
