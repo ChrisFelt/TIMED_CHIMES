@@ -31,11 +31,11 @@ class MTimer():
         return self.__secs_to_nsecs(secs)
     
     def __update_elapsed_time(self) -> None:
-        """Adds current time elapsed from start_time to elapsed_time"""
+        """Finds current time elapsed from start_time to elapsed_time"""
         if self._start_time == 0:
             return
-        else:
-            self._elapsed_time = time.monotonic_ns() - self._start_time
+        
+        self._elapsed_time = time.monotonic_ns() - self._start_time
         print("MTimer total elapsed time: ", self._elapsed_time + self._prev_elapsed)
     
     def get_qtime(self) -> QTime:
@@ -52,7 +52,6 @@ class MTimer():
         """Adds current elapsed time to previous sessions and ends the current session"""
         self.__update_elapsed_time()
         self._prev_elapsed += self._elapsed_time
-        self._start_time = 0  # zero start time in case get_qtime called during pause
         self._elapsed_time = 0
         print("MTimer paused.")
 
