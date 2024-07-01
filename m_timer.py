@@ -31,7 +31,8 @@ class MTimer():
         return self.__secs_to_nsecs(secs)
     
     def __update_elapsed_time(self) -> None:
-        """Finds current time elapsed from start_time to elapsed_time"""
+        """Updates the time elapsed for the current session"""
+        # don't update if timer not started
         if self._start_time == 0:
             return
         
@@ -39,7 +40,7 @@ class MTimer():
         print("MTimer total elapsed time: ", self._elapsed_time + self._prev_elapsed)
     
     def get_qtime(self) -> QTime:
-        """Finds the current time remaining on the timer and returns it as a QTime object"""
+        """Finds the time remaining until target_time is reached and returns it as a QTime object"""
         nsecs_remaining = self.__convert_from_qtime(self._target_time) - self._elapsed_time - self._prev_elapsed
         return self.__convert_to_qtime(nsecs_remaining)
     
