@@ -6,8 +6,6 @@ from m_timer import MTimer
 
 # timeout interval in milliseconds
 TIMEOUT_STEP = 1000
-# seconds to update on timeout
-UPDATE_SEC = TIMEOUT_STEP // 1000
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
