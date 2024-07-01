@@ -30,4 +30,4 @@ Timers can be automated (starts and stops at a user defined time) or chained tog
 
 Include process killing capability? Automatically kills user defined processes (using command line) if they start up. Can be chained to timers or on its own separate timer.
 
-Option to have timer window sit on top of apps wherever the user places it?
+Add smaller secondary lcd screen for seconds portion of timer
