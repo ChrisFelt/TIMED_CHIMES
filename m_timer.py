@@ -58,6 +58,7 @@ class MTimer():
     def reset(self, qtime_object) -> None:
         """Zeroes data and updates target_time to the given qtime"""
         self._target_time = qtime_object
+        self._prev_elapsed = 0
         self._elapsed_time = 0
         self._start_time = 0
         print("Mtimer reset.")
