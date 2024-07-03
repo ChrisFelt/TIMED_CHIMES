@@ -4,12 +4,13 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from ui_main_window import Ui_MainWindow
 from m_timer import MTimer
 
-# timeout interval in milliseconds
-TIMEOUT_STEP = 1000
+# global constants
+TIMEOUT_STEP = 1000  # timeout interval in milliseconds
+ONE_MINUTE = 60
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
-    def __init__(self,app):
+    def __init__(self, app):
         super().__init__()
         self.setupUi(self)
         self.app = app
@@ -76,7 +77,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self._timer.stop()
         # reset internal data members
         self._target_time = self.input_time_box.time()
-        self._timekeeper = MTimer(self._target_time)
+        self._timekeeper.reset(self._target_time)
         self.__update_lcd_screen()
     
     def play_pause(self):
@@ -87,20 +88,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.__pause_timer()
 
     def repeat_timer(self):
-        """Repeats current timer. NOTE: current timer set when "Set Time" button is pressed"""
-        # TODO: implement me
-        pass
+        """Repeats current timer"""
+        self._timer.stop()
+        # reset mtimer with current time
+        self._timekeeper.reset(self._target_time)
+        self.__update_lcd_screen()
+        self.play_pause()
+
 
     def plus_one(self):
         """Adds one minute to current timer and refreshes lcd screen"""
-        self._timekeeper.add_time(60)
+        self._timekeeper.add_time(ONE_MINUTE)
+        self._target_time = self._target_time.addSecs(ONE_MINUTE)
         self.__update_lcd_screen()
     
     def update_timer(self):
-        """QTimer slot for timeout signal. Updates screen and checks for alarm"""
+        """QTimer slot for timeout signal. Updates lcd screen and checks for alarm"""
         # play sound when time is up
         if self._timekeeper.check_time():
             self._timer.stop()  # STOP THE TIMER FIRST!!!
+            self.play_timer_button.setChecked(False)  # reset play button
             self.__alarm()
         else:
             # update screen only if time isn't up - prevents clock from rolling over to 23:59
