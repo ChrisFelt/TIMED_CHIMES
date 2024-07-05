@@ -5,4 +5,10 @@
     <file>images/play.png</file>
     <file>images/repeat.png</file>
   </qresource>
+  <qresource>
+    <file>sounds/Clock Chime.mp3</file>
+    <file>sounds/Guitar.mp3</file>
+    <file>sounds/Harp.mp3</file>
+    <file>sounds/Wind Chime.mp3</file>
+  </qresource>
 </RCC>
