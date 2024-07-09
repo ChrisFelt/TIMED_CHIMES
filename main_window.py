@@ -1,5 +1,5 @@
-from PySide6.QtCore import Qt, QTimer, QTime, QElapsedTimer
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PySide6.QtCore import QTimer, QTime
+from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from ui_main_window import Ui_MainWindow
 from m_timer import MTimer
