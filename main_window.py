@@ -10,6 +10,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.app = app
         self.setupUi(self)
+        self.setWindowTitle("Timed Chimes")
 
         # stacked widgets
         self._display = DisplayWidget()
