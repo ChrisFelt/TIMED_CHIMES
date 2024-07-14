@@ -115,6 +115,21 @@ class Ui_DisplayWidget(object):
 "    border-style: outset;\n"
 "    background: lightGray;\n"
 "    padding: 1px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #bbb\n"
+"        );\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #ddd\n"
+"        );\n"
 "    }")
         icon2 = QIcon()
         icon2.addFile(u":/images/setting.png", QSize(), QIcon.Normal, QIcon.Off)
