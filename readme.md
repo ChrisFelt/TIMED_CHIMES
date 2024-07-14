@@ -1,6 +1,4 @@
 <h4>Welcome to the Timed Chimes GitHub repository!</h4>
-<br>
-
 
 ---
 <br>
