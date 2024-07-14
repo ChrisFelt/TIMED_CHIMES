@@ -1,20 +1,21 @@
 from PySide6.QtWidgets import QMainWindow, QStackedWidget
 
+from ui_main_window import Ui_MainWindow
 from display_widget import DisplayWidget
 from settings_widget import SettingsWidget
 
 
-class MainWindow(QStackedWidget):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, app):
         super().__init__()
         self.app = app
-        self.resize(596, 309)
+        self.setupUi(self)
 
         # stacked widgets
         self._display = DisplayWidget()
         self._settings = SettingsWidget()
 
-        self.addWidget(self._display)
-        self.addWidget(self._settings)
+        self.StackedWidget.addWidget(self._display)
+        self.StackedWidget.addWidget(self._settings)
 
         # slots for toggling between stacked widgets

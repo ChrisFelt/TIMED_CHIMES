@@ -23,19 +23,19 @@ class Ui_DisplayWidget(object):
     def setupUi(self, DisplayWidget):
         if not DisplayWidget.objectName():
             DisplayWidget.setObjectName(u"DisplayWidget")
-        DisplayWidget.resize(596, 309)
+        DisplayWidget.resize(562, 275)
         self.Widget = QWidget(DisplayWidget)
         self.Widget.setObjectName(u"Widget")
-        self.Widget.setGeometry(QRect(6, 19, 561, 271))
+        self.Widget.setGeometry(QRect(1, 2, 560, 271))
         self.timer_lcd_screen = QLCDNumber(self.Widget)
         self.timer_lcd_screen.setObjectName(u"timer_lcd_screen")
-        self.timer_lcd_screen.setGeometry(QRect(120, 50, 311, 121))
+        self.timer_lcd_screen.setGeometry(QRect(125, 63, 311, 121))
         self.timer_lcd_screen.setFocusPolicy(Qt.ClickFocus)
         self.timer_lcd_screen.setDigitCount(5)
         self.timer_lcd_screen.setProperty("intValue", 0)
         self.play_timer_button = QPushButton(self.Widget)
         self.play_timer_button.setObjectName(u"play_timer_button")
-        self.play_timer_button.setGeometry(QRect(460, 77, 70, 70))
+        self.play_timer_button.setGeometry(QRect(465, 90, 70, 70))
         self.play_timer_button.setStyleSheet(u"QPushButton {\n"
 "    border: 2px solid black;\n"
 "    border-radius: 35px;\n"
@@ -66,7 +66,7 @@ class Ui_DisplayWidget(object):
         self.play_timer_button.setCheckable(True)
         self.repeat_timer_button = QPushButton(self.Widget)
         self.repeat_timer_button.setObjectName(u"repeat_timer_button")
-        self.repeat_timer_button.setGeometry(QRect(20, 77, 70, 70))
+        self.repeat_timer_button.setGeometry(QRect(25, 90, 70, 70))
         self.repeat_timer_button.setStyleSheet(u"QPushButton {\n"
 "    border: 2px solid black;\n"
 "    border-radius: 35px;\n"
@@ -95,18 +95,31 @@ class Ui_DisplayWidget(object):
         self.repeat_timer_button.setIconSize(QSize(40, 40))
         self.plus_one_button = QPushButton(self.Widget)
         self.plus_one_button.setObjectName(u"plus_one_button")
-        self.plus_one_button.setGeometry(QRect(330, 10, 101, 30))
+        self.plus_one_button.setGeometry(QRect(335, 23, 101, 30))
         self.set_time_button = QPushButton(self.Widget)
         self.set_time_button.setObjectName(u"set_time_button")
-        self.set_time_button.setGeometry(QRect(360, 190, 71, 41))
+        self.set_time_button.setGeometry(QRect(365, 203, 71, 41))
         self.input_time_box = QTimeEdit(self.Widget)
         self.input_time_box.setObjectName(u"input_time_box")
-        self.input_time_box.setGeometry(QRect(280, 195, 71, 31))
+        self.input_time_box.setGeometry(QRect(285, 208, 71, 31))
         font = QFont()
         font.setPointSize(12)
         self.input_time_box.setFont(font)
         self.input_time_box.setCurrentSection(QDateTimeEdit.HourSection)
         self.input_time_box.setTime(QTime(0, 0, 0))
+        self.open_settings_button = QPushButton(self.Widget)
+        self.open_settings_button.setObjectName(u"open_settings_button")
+        self.open_settings_button.setGeometry(QRect(40, 205, 35, 35))
+        self.open_settings_button.setStyleSheet(u"QPushButton {\n"
+"    border: 1px;\n"
+"    border-style: outset;\n"
+"    background: lightGray;\n"
+"    padding: 1px;\n"
+"    }")
+        icon2 = QIcon()
+        icon2.addFile(u":/images/setting.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.open_settings_button.setIcon(icon2)
+        self.open_settings_button.setIconSize(QSize(30, 30))
 
         self.retranslateUi(DisplayWidget)
 
@@ -126,5 +139,6 @@ class Ui_DisplayWidget(object):
         self.input_time_box.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.input_time_box.setDisplayFormat(QCoreApplication.translate("DisplayWidget", u"hh:mm", None))
+        self.open_settings_button.setText("")
     # retranslateUi
 
