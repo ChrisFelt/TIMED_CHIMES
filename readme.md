@@ -19,6 +19,9 @@ Stay tuned for the User Guide when basic functionality is complete.
 <br>
 Button icon source:
 <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by KP Arts - Flaticon</a>
+
+<br>
+This app makes use of the Qt framework for Python, <a href="https://www.qt.io/qt-for-python">PySide6</a>. Qt is licensed for open-source usage under <a href="https://www.qt.io/licensing/open-source-lgpl-obligations#lgpl">(L)GPLv3</a>. 
 <br><br>
 
 ---
