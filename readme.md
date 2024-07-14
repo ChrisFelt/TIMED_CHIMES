@@ -9,7 +9,7 @@ Timed Chimes is a simple Windows desktop timer that plays user specified alert s
 It is intended to help improve long-term health and productivity by giving the user an audio cue to stand up, move around, or stretch at regular time intervals.
 
 
-This app is currently under construction. At present, the all buttons on the timer display window and timer functionality are working. The settings window and sounds functionality are in currently a work in progress.
+This app is currently under construction. At present, all of the buttons on the timer display window and timer functionality are working. The settings window and sounds functionality are in currently a work in progress.
 
 
 Stay tuned for the User Guide when basic functionality is complete.
