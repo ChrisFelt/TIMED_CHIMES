@@ -11,6 +11,7 @@ class SettingsWidget(QWidget, Ui_SettingsWidget):
 
         # find absolute path of /sounds
         wd = QDir.current()
+        # TODO: error catching - check if /sounds exists first!
         path = QDir(wd.path() + "/sounds")
 
         # list of mp3 files in path
