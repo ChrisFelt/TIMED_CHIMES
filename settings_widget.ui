@@ -25,16 +25,6 @@
    <property name="toolTip">
     <string/>
    </property>
-   <widget class="QListWidget" name="sounds_list">
-    <property name="geometry">
-     <rect>
-      <x>254</x>
-      <y>41</y>
-      <width>281</width>
-      <height>171</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -172,6 +162,26 @@
      <string>Close</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="sounds_list_view">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>40</y>
+      <width>281</width>
+      <height>171</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>sounds_list_view</zorder>
+   <zorder>label</zorder>
+   <zorder>play_list_button</zorder>
+   <zorder>remove_sound_button</zorder>
+   <zorder>import_sound_button</zorder>
+   <zorder>randomize_sound_box</zorder>
+   <zorder>auto_repeat_box</zorder>
+   <zorder>lock_display_box</zorder>
+   <zorder>hide_time_box</zorder>
+   <zorder>close_settings_button</zorder>
   </widget>
  </widget>
  <resources>
