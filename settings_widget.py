@@ -9,20 +9,25 @@ class SettingsWidget(QWidget, Ui_SettingsWidget):
         super().__init__()
         self.setupUi(self)
 
-        # find absolute path of /sounds
+        # set sounds directory
         self._wd = QDir.current()
-        # TODO: error catching - check if /sounds exists first!
+        
         self._path = QDir(self._wd.path() + "/sounds")
-
         # create sounds directory if it does not exist    
         if not self._path.exists():    
             QDir().mkdir("/sounds")
-
 
         # list of mp3 files in path
         sounds_list = self._path.entryList("*.mp3", QDir.Files)
 
         # populate list widget
         self.sounds_list_view.addItems(sounds_list)
+        # list widget slots
+        self.sounds_list_view.currentItemChanged.connect(self.update_sound_label)      
 
+    # -------------
+    # SETTINGS tab slots
+    def update_sound_label(self, current, previous):
+        self.sound_title_label.setText(current.text())
+        print(current.text())
 
