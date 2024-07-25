@@ -29,7 +29,7 @@
     <property name="geometry">
      <rect>
       <x>259</x>
-      <y>21</y>
+      <y>10</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -41,8 +41,8 @@
    <widget class="QPushButton" name="play_list_button">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>218</y>
+      <x>461</x>
+      <y>200</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -62,8 +62,8 @@
    <widget class="QPushButton" name="remove_sound_button">
     <property name="geometry">
      <rect>
-      <x>253</x>
-      <y>218</y>
+      <x>254</x>
+      <y>200</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -75,8 +75,8 @@
    <widget class="QPushButton" name="import_sound_button">
     <property name="geometry">
      <rect>
-      <x>349</x>
-      <y>218</y>
+      <x>350</x>
+      <y>200</y>
       <width>91</width>
       <height>24</height>
      </rect>
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>31</x>
-      <y>51</y>
+      <y>46</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -105,7 +105,7 @@
     <property name="geometry">
      <rect>
       <x>31</x>
-      <y>81</y>
+      <y>76</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -121,7 +121,7 @@
     <property name="geometry">
      <rect>
       <x>31</x>
-      <y>111</y>
+      <y>106</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -137,7 +137,7 @@
     <property name="geometry">
      <rect>
       <x>31</x>
-      <y>141</y>
+      <y>136</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -153,9 +153,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>218</y>
+      <y>200</y>
       <width>75</width>
-      <height>24</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -166,10 +166,36 @@
     <property name="geometry">
      <rect>
       <x>255</x>
-      <y>40</y>
+      <y>30</y>
       <width>281</width>
-      <height>171</height>
+      <height>161</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>258</x>
+      <y>235</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Current Sound:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sound_title_label">
+    <property name="geometry">
+     <rect>
+      <x>345</x>
+      <y>235</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sound Title Place Holder</string>
     </property>
    </widget>
    <zorder>sounds_list_view</zorder>
@@ -182,6 +208,8 @@
    <zorder>lock_display_box</zorder>
    <zorder>hide_time_box</zorder>
    <zorder>close_settings_button</zorder>
+   <zorder>label_2</zorder>
+   <zorder>sound_title_label</zorder>
   </widget>
  </widget>
  <resources>
